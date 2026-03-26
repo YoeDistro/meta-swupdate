@@ -5,6 +5,7 @@ DEPENDS = "lua"
 LIC_FILES_CHKSUM = "file://${UNPACKDIR}/swupdate_handlers.lua;md5=354cf4af377edd962d2e8d78085d3ed7;beginline=1;endline=19"
 
 SRC_URI = "file://swupdate_handlers.lua"
+S = "${UNPACKDIR}"
 
 inherit pkgconfig
 
