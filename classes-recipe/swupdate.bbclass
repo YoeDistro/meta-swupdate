@@ -22,9 +22,9 @@
 #   Example:
 #     SWUPDATE_IMAGES = "core-image-full-cmdline"
 #     SWUPDATE_IMAGES_FSTYPES[core-image-full-cmdline] = ".ext4.gz"
-#   For this example either a file core-image-full-cmdline-${MACHINE}.ext4.gz or a file
+#   For this example either a file core-image-full-cmdline${IMAGE_MACHINE_SUFFIX}.ext4.gz or a file
 #   core-image-full-cmdline.ext4.gz gets added the swu archive. Optionally the variable
-#   SWUPDATE_IMAGES_NOAPPEND_MACHINE allows to explicitly define if the MACHINE name
+#   SWUPDATE_IMAGES_NOAPPEND_MACHINE allows to explicitly define if the IMAGE_MACHINE_SUFFIX name
 #   must be part of the image file name or not.
 # * image file name(s)
 #   Example:

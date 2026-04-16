@@ -18,7 +18,7 @@ do_swuimage[dirs] = "${SWUDEPLOYDIR}"
 do_swuimage[cleandirs] += "${SWUDEPLOYDIR}"
 do_swuimage[sstate-inputdirs] = "${SWUDEPLOYDIR}"
 do_swuimage[sstate-outputdirs] = "${DEPLOY_DIR_IMAGE}"
-do_swuimage[stamp-extra-info] = "${MACHINE}"
+do_swuimage[stamp-extra-info] = "${IMAGE_MACHINE_SUFFIX}"
 
 python () {
     deps = " " + swupdate_getdepends(d)
@@ -283,12 +283,12 @@ def swupdate_add_artifacts(d, list_for_cpio):
         encrypted = (d.getVarFlag("SWUPDATE_IMAGES_ENCRYPTED", image) or "")
         if fstypes:
             noappend_machine = d.getVarFlag("SWUPDATE_IMAGES_NOAPPEND_MACHINE", image)
-            if noappend_machine == "0":  # Search for a file explicitly with MACHINE
-                imagebases = [ image + '-' + d.getVar('MACHINE') ]
-            elif noappend_machine == "1":  # Search for a file explicitly without MACHINE
+            if noappend_machine == "0":  # Search for a file explicitly with IMAGE_MACHINE_SUFFIX
+                imagebases = [ image + d.getVar('IMAGE_MACHINE_SUFFIX') ]
+            elif noappend_machine == "1":  # Search for a file explicitly without IMAGE_MACHINE_SUFFIX
                 imagebases = [ image ]
-            else:  # None, means auto mode. Just try to find an image file with MACHINE or without MACHINE
-                imagebases = [ image + '-' + d.getVar('MACHINE'), image ]
+            else:  # None, means auto mode. Just try to find an image file with IMAGE_MACHINE_SUFFIX or without IMAGE_MACHINE_SUFFIX
+                imagebases = [ image + d.getVar('IMAGE_MACHINE_SUFFIX'), image ]
             for fstype in fstypes:
                 image_found = False
                 for imagebase in imagebases:
