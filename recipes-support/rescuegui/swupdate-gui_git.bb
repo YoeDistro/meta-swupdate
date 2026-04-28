@@ -28,8 +28,8 @@ SYSTEMD_SERVICE:${PN} = "swupdate-gui.service"
 do_install:append () {
         install -d ${D}${sysconfdir}/init.d
     	install -d ${D}${systemd_system_unitdir}
-        install -m 0755 ${WORKDIR}/swupdate-gui ${D}${sysconfdir}/init.d/
-    	install -m 644 ${WORKDIR}/swupdate-gui.service ${D}${systemd_system_unitdir}
+        install -m 0755 ${UNPACKDIR}/swupdate-gui ${D}${sysconfdir}/init.d/
+    	install -m 644 ${UNPACKDIR}/swupdate-gui.service ${D}${systemd_system_unitdir}
         install -d ${D}${sysconfdir}/recovery_gui
         install -m 0644 ${S}/config/config.txt ${D}${sysconfdir}/recovery_gui/
         install -m 0755 ${S}/scripts/recovery-check-bridge-interface.sh ${D}${bindir}
